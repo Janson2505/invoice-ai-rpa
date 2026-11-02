@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 473/2026",
+  "issue_date": "2026-03-16",
+  "due_date": "2026-03-30",
+  "seller_name": "Vega Serwis Sp. j.",
+  "seller_nip": "1748217593",
+  "buyer_name": "Nova Consulting S.A.",
+  "buyer_nip": "2969379231",
+  "currency": "PLN",
+  "net_amount": "11239.36",
+  "vat_amount": "2585.05",
+  "gross_amount": "13824.41"
+}

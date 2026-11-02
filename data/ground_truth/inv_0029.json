@@ -1,0 +1,13 @@
+{
+  "invoice_number": "641/07/2026",
+  "issue_date": "2026-07-25",
+  "due_date": "2026-08-01",
+  "seller_name": "Beta Transport Sp. j.",
+  "seller_nip": "9247710938",
+  "buyer_name": "Delta Handel Sp. z o.o.",
+  "buyer_nip": "9760385973",
+  "currency": "PLN",
+  "net_amount": "9638.39",
+  "vat_amount": "2216.83",
+  "gross_amount": "11855.22"
+}

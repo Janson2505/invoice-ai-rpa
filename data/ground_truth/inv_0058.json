@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 921/2026",
+  "issue_date": "2026-09-09",
+  "due_date": "2026-09-23",
+  "seller_name": "Terra Logistyka Sp. j.",
+  "seller_nip": "6188442250",
+  "buyer_name": "Anna Nowak",
+  "buyer_nip": null,
+  "currency": "PLN",
+  "net_amount": "2671.89",
+  "vat_amount": "614.53",
+  "gross_amount": "3286.42"
+}

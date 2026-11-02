@@ -1,0 +1,13 @@
+{
+  "invoice_number": "746/10/2026",
+  "issue_date": "2026-10-20",
+  "due_date": "2026-11-19",
+  "seller_name": "Delta Transport S.A.",
+  "seller_nip": "4872624736",
+  "buyer_name": "Polaris Logistyka Sp. z o.o.",
+  "buyer_nip": "7566701062",
+  "currency": "EUR",
+  "net_amount": "5196.02",
+  "vat_amount": "1195.08",
+  "gross_amount": "6391.10"
+}

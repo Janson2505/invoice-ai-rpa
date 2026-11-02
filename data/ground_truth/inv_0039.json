@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/04/0809",
+  "issue_date": "2026-04-30",
+  "due_date": "2026-05-21",
+  "seller_name": "Horyzont Technologie Sp. z o.o.",
+  "seller_nip": "3402681179",
+  "buyer_name": "Alfa Budownictwo S.A.",
+  "buyer_nip": "3842102056",
+  "currency": "PLN",
+  "net_amount": "16339.68",
+  "vat_amount": "3758.13",
+  "gross_amount": "20097.81"
+}

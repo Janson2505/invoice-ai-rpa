@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/07/0076",
+  "issue_date": "2026-07-05",
+  "due_date": "2026-07-12",
+  "seller_name": "Silesia Energia S.A.",
+  "seller_nip": "2249985699",
+  "buyer_name": "Beta Finanse Sp. j.",
+  "buyer_nip": "8007661772",
+  "currency": "PLN",
+  "net_amount": "9579.24",
+  "vat_amount": "2203.23",
+  "gross_amount": "11782.47"
+}

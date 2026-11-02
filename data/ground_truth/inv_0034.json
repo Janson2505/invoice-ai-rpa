@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/08/0282",
+  "issue_date": "2026-08-06",
+  "due_date": "2026-08-27",
+  "seller_name": "Horyzont Finanse Sp. z o.o.",
+  "seller_nip": "8439533940",
+  "buyer_name": "Karpaty Serwis Sp. z o.o.",
+  "buyer_nip": "4695944061",
+  "currency": "PLN",
+  "net_amount": "9680.54",
+  "vat_amount": "774.44",
+  "gross_amount": "10454.98"
+}

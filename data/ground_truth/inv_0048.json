@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/02/0342",
+  "issue_date": "2026-02-13",
+  "due_date": "2026-02-27",
+  "seller_name": "Horyzont Finanse S.A.",
+  "seller_nip": "6462914861",
+  "buyer_name": "Terra Media S.A.",
+  "buyer_nip": "2518644926",
+  "currency": "PLN",
+  "net_amount": "920.86",
+  "vat_amount": "211.80",
+  "gross_amount": "1132.66"
+}

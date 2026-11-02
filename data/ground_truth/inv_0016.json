@@ -1,0 +1,13 @@
+{
+  "invoice_number": "477/08/2026",
+  "issue_date": "2026-08-04",
+  "due_date": "2026-09-03",
+  "seller_name": "Terra Finanse S.A.",
+  "seller_nip": "9721489510",
+  "buyer_name": "Horyzont Budownictwo Sp. k.",
+  "buyer_nip": "9044369954",
+  "currency": "PLN",
+  "net_amount": "14304.38",
+  "vat_amount": "3290.01",
+  "gross_amount": "17594.39"
+}

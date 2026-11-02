@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/05/0765",
+  "issue_date": "2026-05-16",
+  "due_date": "2026-06-06",
+  "seller_name": "Nordic Logistyka Sp. z o.o.",
+  "seller_nip": "8240050450",
+  "buyer_name": "Silesia Finanse Sp. k.",
+  "buyer_nip": "6780913439",
+  "currency": "PLN",
+  "net_amount": "13170.69",
+  "vat_amount": "3029.26",
+  "gross_amount": "16199.95"
+}

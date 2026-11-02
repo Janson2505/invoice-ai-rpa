@@ -1,0 +1,13 @@
+{
+  "invoice_number": "170/08/2026",
+  "issue_date": "2026-08-21",
+  "due_date": "2026-08-28",
+  "seller_name": "Meridian Energia Sp. j.",
+  "seller_nip": "8174648876",
+  "buyer_name": "Horyzont Finanse S.A.",
+  "buyer_nip": "7183242104",
+  "currency": "PLN",
+  "net_amount": "14515.50",
+  "vat_amount": "3338.57",
+  "gross_amount": "17854.07"
+}

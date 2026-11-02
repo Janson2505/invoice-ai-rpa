@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 725/2026",
+  "issue_date": "2026-07-24",
+  "due_date": "2026-08-14",
+  "seller_name": "Beta Transport Sp. z o.o.",
+  "seller_nip": "1518347381",
+  "buyer_name": "Atlas Transport Sp. z o.o.",
+  "buyer_nip": "6098393016",
+  "currency": "PLN",
+  "net_amount": "9287.62",
+  "vat_amount": "743.01",
+  "gross_amount": "10030.63"
+}

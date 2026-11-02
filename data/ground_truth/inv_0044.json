@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 499/2026",
+  "issue_date": "2026-01-26",
+  "due_date": "2026-02-02",
+  "seller_name": "Mazovia Systemy S.A.",
+  "seller_nip": "7900343242",
+  "buyer_name": "Meridian Serwis Sp. k.",
+  "buyer_nip": "5381561493",
+  "currency": "PLN",
+  "net_amount": "5806.41",
+  "vat_amount": "1335.47",
+  "gross_amount": "7141.88"
+}

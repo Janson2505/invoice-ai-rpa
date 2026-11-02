@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 157/2026",
+  "issue_date": "2026-08-23",
+  "due_date": "2026-09-06",
+  "seller_name": "Nova Finanse Sp. k.",
+  "seller_nip": "2669784803",
+  "buyer_name": "Zenit Budownictwo Sp. k.",
+  "buyer_nip": "7532871012",
+  "currency": "PLN",
+  "net_amount": "5654.93",
+  "vat_amount": "1300.63",
+  "gross_amount": "6955.56"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/08/0442",
+  "issue_date": "2026-08-11",
+  "due_date": "2026-09-01",
+  "seller_name": "Silesia Energia Sp. j.",
+  "seller_nip": "2484656482",
+  "buyer_name": "Prime Logistyka Sp. k.",
+  "buyer_nip": "4406088355",
+  "currency": "PLN",
+  "net_amount": "15378.69",
+  "vat_amount": "3537.10",
+  "gross_amount": "18915.79"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 326/2026",
+  "issue_date": "2026-06-02",
+  "due_date": "2026-07-02",
+  "seller_name": "Optima Handel Sp. k.",
+  "seller_nip": "2870262179",
+  "buyer_name": "Baltic Technologie Sp. k.",
+  "buyer_nip": "8533963604",
+  "currency": "PLN",
+  "net_amount": "18245.82",
+  "vat_amount": "4196.54",
+  "gross_amount": "22442.36"
+}

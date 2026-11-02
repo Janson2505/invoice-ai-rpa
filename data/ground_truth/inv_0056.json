@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 77/2026",
+  "issue_date": "2026-02-22",
+  "due_date": "2026-03-01",
+  "seller_name": "Karpaty Technologie S.A.",
+  "seller_nip": "1297021355",
+  "buyer_name": "Meridian Handel S.A.",
+  "buyer_nip": "8570596407",
+  "currency": "PLN",
+  "net_amount": "6976.97",
+  "vat_amount": "1604.70",
+  "gross_amount": "8581.67"
+}

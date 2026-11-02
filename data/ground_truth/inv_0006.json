@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/02/0785",
+  "issue_date": "2026-02-10",
+  "due_date": "2026-02-17",
+  "seller_name": "Orion Finanse Sp. k.",
+  "seller_nip": "9248963831",
+  "buyer_name": "Tomasz Kamiński",
+  "buyer_nip": null,
+  "currency": "PLN",
+  "net_amount": "15449.21",
+  "vat_amount": "3553.32",
+  "gross_amount": "19002.53"
+}

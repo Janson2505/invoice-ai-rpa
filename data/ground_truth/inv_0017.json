@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 152/2026",
+  "issue_date": "2026-05-01",
+  "due_date": "2026-05-22",
+  "seller_name": "Alfa Logistyka Sp. k.",
+  "seller_nip": "4287083178",
+  "buyer_name": "Beta Transport Sp. k.",
+  "buyer_nip": "2769367631",
+  "currency": "PLN",
+  "net_amount": "4811.05",
+  "vat_amount": "384.88",
+  "gross_amount": "5195.93"
+}

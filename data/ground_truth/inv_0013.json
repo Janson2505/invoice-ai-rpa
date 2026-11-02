@@ -1,0 +1,13 @@
+{
+  "invoice_number": "906/03/2026",
+  "issue_date": "2026-03-18",
+  "due_date": "2026-03-25",
+  "seller_name": "Meridian Consulting S.A.",
+  "seller_nip": "3260256347",
+  "buyer_name": "Nordic Consulting Sp. z o.o.",
+  "buyer_nip": "5505331581",
+  "currency": "PLN",
+  "net_amount": "17602.72",
+  "vat_amount": "4048.63",
+  "gross_amount": "21651.35"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 71/2026",
+  "issue_date": "2026-09-15",
+  "due_date": "2026-09-29",
+  "seller_name": "Gamma Finanse S.A.",
+  "seller_nip": "7193990919",
+  "buyer_name": "Anna Nowak",
+  "buyer_nip": null,
+  "currency": "PLN",
+  "net_amount": "1292.85",
+  "vat_amount": "64.64",
+  "gross_amount": "1357.49"
+}

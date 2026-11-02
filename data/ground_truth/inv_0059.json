@@ -1,0 +1,13 @@
+{
+  "invoice_number": "539/03/2026",
+  "issue_date": "2026-03-04",
+  "due_date": "2026-03-18",
+  "seller_name": "Nordic Energia Sp. z o.o.",
+  "seller_nip": "3517785281",
+  "buyer_name": "Alfa Technologie Sp. j.",
+  "buyer_nip": "8829114671",
+  "currency": "PLN",
+  "net_amount": "16710.82",
+  "vat_amount": "3843.49",
+  "gross_amount": "20554.31"
+}

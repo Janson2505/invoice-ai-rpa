@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/06/0348",
+  "issue_date": "2026-06-08",
+  "due_date": "2026-07-08",
+  "seller_name": "Optima Serwis Sp. j.",
+  "seller_nip": "9416169282",
+  "buyer_name": "Polaris Budownictwo Sp. j.",
+  "buyer_nip": "1541566765",
+  "currency": "PLN",
+  "net_amount": "17200.30",
+  "vat_amount": "3956.07",
+  "gross_amount": "21156.37"
+}

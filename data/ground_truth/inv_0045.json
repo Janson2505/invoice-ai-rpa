@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/03/0944",
+  "issue_date": "2026-03-03",
+  "due_date": "2026-03-10",
+  "seller_name": "Silesia Energia Sp. k.",
+  "seller_nip": "7641605290",
+  "buyer_name": "Karpaty Media S.A.",
+  "buyer_nip": "9851606078",
+  "currency": "PLN",
+  "net_amount": "10530.92",
+  "vat_amount": "2422.11",
+  "gross_amount": "12953.03"
+}

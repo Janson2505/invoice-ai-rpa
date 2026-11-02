@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/02/0204",
+  "issue_date": "2026-02-28",
+  "due_date": "2026-03-21",
+  "seller_name": "Baltic Consulting Sp. z o.o.",
+  "seller_nip": "6701543038",
+  "buyer_name": "Nordic Consulting Sp. k.",
+  "buyer_nip": "1482814893",
+  "currency": "EUR",
+  "net_amount": "16218.68",
+  "vat_amount": "3730.30",
+  "gross_amount": "19948.98"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/10/0197",
+  "issue_date": "2026-10-11",
+  "due_date": "2026-11-01",
+  "seller_name": "Optima Budownictwo Sp. j.",
+  "seller_nip": "2343524086",
+  "buyer_name": "Baltic Serwis Sp. j.",
+  "buyer_nip": "5431351824",
+  "currency": "PLN",
+  "net_amount": "9023.46",
+  "vat_amount": "451.17",
+  "gross_amount": "9474.63"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 407/2026",
+  "issue_date": "2026-08-31",
+  "due_date": "2026-09-07",
+  "seller_name": "Polaris Logistyka S.A.",
+  "seller_nip": "2491905868",
+  "buyer_name": "Vega Technologie S.A.",
+  "buyer_nip": "2241904968",
+  "currency": "PLN",
+  "net_amount": "11927.29",
+  "vat_amount": "954.18",
+  "gross_amount": "12881.47"
+}

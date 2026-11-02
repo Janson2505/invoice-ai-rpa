@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/06/0263",
+  "issue_date": "2026-06-13",
+  "due_date": "2026-06-20",
+  "seller_name": "Orion Media Sp. k.",
+  "seller_nip": "2434103692",
+  "buyer_name": "Orion Consulting Sp. z o.o.",
+  "buyer_nip": "5727790102",
+  "currency": "PLN",
+  "net_amount": "17698.80",
+  "vat_amount": "4070.72",
+  "gross_amount": "21769.52"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 678/2026",
+  "issue_date": "2026-02-08",
+  "due_date": "2026-03-10",
+  "seller_name": "Optima Consulting S.A.",
+  "seller_nip": "5309805002",
+  "buyer_name": "Beta Finanse Sp. z o.o.",
+  "buyer_nip": "3606474683",
+  "currency": "PLN",
+  "net_amount": "17045.45",
+  "vat_amount": "1363.64",
+  "gross_amount": "18409.09"
+}

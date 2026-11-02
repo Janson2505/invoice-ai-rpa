@@ -1,0 +1,13 @@
+{
+  "invoice_number": "221/05/2026",
+  "issue_date": "2026-05-17",
+  "due_date": "2026-05-24",
+  "seller_name": "Nordic Serwis Sp. j.",
+  "seller_nip": "3545991029",
+  "buyer_name": "Silesia Technologie Sp. z o.o.",
+  "buyer_nip": "3296120180",
+  "currency": "PLN",
+  "net_amount": "3883.59",
+  "vat_amount": "893.23",
+  "gross_amount": "4776.82"
+}

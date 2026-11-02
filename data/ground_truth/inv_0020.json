@@ -1,0 +1,13 @@
+{
+  "invoice_number": "217/08/2026",
+  "issue_date": "2026-08-28",
+  "due_date": "2026-09-11",
+  "seller_name": "Silesia Technologie Sp. k.",
+  "seller_nip": "4100330928",
+  "buyer_name": "Horyzont Energia Sp. z o.o.",
+  "buyer_nip": "2627204652",
+  "currency": "PLN",
+  "net_amount": "13149.67",
+  "vat_amount": "3024.42",
+  "gross_amount": "16174.09"
+}

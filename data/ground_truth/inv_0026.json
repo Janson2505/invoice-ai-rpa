@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 178/2026",
+  "issue_date": "2026-04-26",
+  "due_date": "2026-05-26",
+  "seller_name": "Gamma Consulting Sp. z o.o.",
+  "seller_nip": "7797403442",
+  "buyer_name": "Horyzont Handel Sp. j.",
+  "buyer_nip": "1913341236",
+  "currency": "PLN",
+  "net_amount": "9547.97",
+  "vat_amount": "763.84",
+  "gross_amount": "10311.81"
+}

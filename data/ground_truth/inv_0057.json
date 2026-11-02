@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/10/0984",
+  "issue_date": "2026-10-18",
+  "due_date": "2026-10-25",
+  "seller_name": "Alfa Consulting Sp. k.",
+  "seller_nip": "9681447390",
+  "buyer_name": "Baltic Technologie Sp. k.",
+  "buyer_nip": "2928565439",
+  "currency": "PLN",
+  "net_amount": "12789.75",
+  "vat_amount": "2941.64",
+  "gross_amount": "15731.39"
+}

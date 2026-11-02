@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/09/0569",
+  "issue_date": "2026-09-11",
+  "due_date": "2026-10-02",
+  "seller_name": "Optima Finanse Sp. k.",
+  "seller_nip": "8014363490",
+  "buyer_name": "Vega Technologie Sp. j.",
+  "buyer_nip": "5808313671",
+  "currency": "PLN",
+  "net_amount": "3913.45",
+  "vat_amount": "900.09",
+  "gross_amount": "4813.54"
+}

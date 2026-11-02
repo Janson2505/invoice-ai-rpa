@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FV/2026/01/0117",
+  "issue_date": "2026-01-24",
+  "due_date": "2026-01-31",
+  "seller_name": "Karpaty Serwis Sp. z o.o.",
+  "seller_nip": "1229413189",
+  "buyer_name": "Optima Logistyka Sp. z o.o.",
+  "buyer_nip": "5777520474",
+  "currency": "PLN",
+  "net_amount": "11704.77",
+  "vat_amount": "2692.10",
+  "gross_amount": "14396.87"
+}

@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 681/2026",
+  "issue_date": "2026-02-26",
+  "due_date": "2026-03-28",
+  "seller_name": "Gamma Media Sp. j.",
+  "seller_nip": "2888880671",
+  "buyer_name": "Horyzont Transport S.A.",
+  "buyer_nip": "5609539622",
+  "currency": "PLN",
+  "net_amount": "12614.52",
+  "vat_amount": "2901.34",
+  "gross_amount": "15515.86"
+}

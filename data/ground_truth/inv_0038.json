@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 94/2026",
+  "issue_date": "2026-05-24",
+  "due_date": "2026-05-31",
+  "seller_name": "Polaris Finanse Sp. z o.o.",
+  "seller_nip": "1532931834",
+  "buyer_name": "Atlas Technologie Sp. z o.o.",
+  "buyer_nip": "6850643176",
+  "currency": "PLN",
+  "net_amount": "14576.23",
+  "vat_amount": "3352.53",
+  "gross_amount": "17928.76"
+}

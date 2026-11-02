@@ -1,0 +1,13 @@
+{
+  "invoice_number": "282/08/2026",
+  "issue_date": "2026-08-26",
+  "due_date": "2026-09-16",
+  "seller_name": "Gamma Budownictwo S.A.",
+  "seller_nip": "5558122360",
+  "buyer_name": "Prime Handel Sp. k.",
+  "buyer_nip": "3774348737",
+  "currency": "PLN",
+  "net_amount": "15938.74",
+  "vat_amount": "1275.10",
+  "gross_amount": "17213.84"
+}

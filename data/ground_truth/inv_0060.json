@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 515/2026",
+  "issue_date": "2026-04-04",
+  "due_date": "2026-04-18",
+  "seller_name": "Nova Energia S.A.",
+  "seller_nip": "3995900104",
+  "buyer_name": "Delta Media S.A.",
+  "buyer_nip": "5384249810",
+  "currency": "EUR",
+  "net_amount": "9172.66",
+  "vat_amount": "2109.71",
+  "gross_amount": "11282.37"
+}

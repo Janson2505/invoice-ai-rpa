@@ -1,0 +1,13 @@
+{
+  "invoice_number": "477/02/2026",
+  "issue_date": "2026-02-05",
+  "due_date": "2026-02-26",
+  "seller_name": "Horyzont Budownictwo Sp. j.",
+  "seller_nip": "4147379967",
+  "buyer_name": "Delta Handel Sp. j.",
+  "buyer_nip": "8262849870",
+  "currency": "PLN",
+  "net_amount": "365.33",
+  "vat_amount": "29.23",
+  "gross_amount": "394.56"
+}
