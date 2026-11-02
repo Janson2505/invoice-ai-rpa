@@ -1,0 +1,79 @@
+{
+  "document_id": "inv_0001",
+  "fields": {
+    "invoice_number": {
+      "value": "FV/2026/10/0042",
+      "confidence": 0.97,
+      "source": { "page": 1, "snippet": "Faktura VAT nr FV/2026/10/0042" },
+      "flags": []
+    },
+    "issue_date": {
+      "value": "2026-10-14",
+      "confidence": 0.95,
+      "source": { "page": 1, "snippet": "Data wystawienia: 14.10.2026" },
+      "flags": []
+    },
+    "due_date": {
+      "value": "2026-10-28",
+      "confidence": 0.93,
+      "source": { "page": 1, "snippet": "Termin płatności: 28.10.2026" },
+      "flags": []
+    },
+    "seller_name": {
+      "value": "Alfa Systemy Sp. z o.o.",
+      "confidence": 0.96,
+      "source": { "page": 1, "snippet": "Sprzedawca: Alfa Systemy Sp. z o.o." },
+      "flags": []
+    },
+    "seller_nip": {
+      "value": "5252248481",
+      "confidence": 0.98,
+      "source": { "page": 1, "snippet": "NIP: 525-224-84-81" },
+      "flags": []
+    },
+    "buyer_name": {
+      "value": "Beta Logistyka S.A.",
+      "confidence": 0.94,
+      "source": { "page": 1, "snippet": "Nabywca: Beta Logistyka S.A." },
+      "flags": []
+    },
+    "buyer_nip": {
+      "value": "1234567890",
+      "confidence": 0.41,
+      "source": { "page": 1, "snippet": "NIP: 123-456-78-90" },
+      "flags": ["checksum_failed"]
+    },
+    "currency": {
+      "value": "PLN",
+      "confidence": 0.99,
+      "source": null,
+      "flags": []
+    },
+    "net_amount": {
+      "value": "1000.00",
+      "confidence": 0.92,
+      "source": { "page": 1, "snippet": "Razem netto: 1 000,00" },
+      "flags": []
+    },
+    "vat_amount": {
+      "value": "230.00",
+      "confidence": 0.92,
+      "source": { "page": 1, "snippet": "VAT 23%: 230,00" },
+      "flags": []
+    },
+    "gross_amount": {
+      "value": "1230.00",
+      "confidence": 0.95,
+      "source": { "page": 1, "snippet": "Do zapłaty: 1 230,00 PLN" },
+      "flags": []
+    }
+  },
+  "document_flags": [],
+  "overall_confidence": 0.41,
+  "meta": {
+    "model_version": "dev-0.1",
+    "extraction_method": "text_llm",
+    "processing_time_ms": 3200,
+    "cost_usd": 0.004
+  }
+}
