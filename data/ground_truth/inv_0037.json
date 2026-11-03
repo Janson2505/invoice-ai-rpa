@@ -1,7 +1,7 @@
 {
   "invoice_number": "FS 909/2026",
   "issue_date": "2026-10-15",
-  "due_date": "2026-11-05",
+  "due_date": null,
   "seller_name": "Orion Handel Sp. k.",
   "seller_nip": "6869261791",
   "buyer_name": "Terra Budownictwo Sp. k.",

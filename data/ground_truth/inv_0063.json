@@ -1,0 +1,13 @@
+{
+  "invoice_number": "306/04/2026",
+  "issue_date": "2026-04-20",
+  "due_date": "2026-04-27",
+  "seller_name": "Nordic Media S.A.",
+  "seller_nip": "8346706566",
+  "buyer_name": "Nordic Systemy S.A.",
+  "buyer_nip": "7690967053",
+  "currency": "PLN",
+  "net_amount": "8800.41",
+  "vat_amount": "2024.09",
+  "gross_amount": "10824.50"
+}

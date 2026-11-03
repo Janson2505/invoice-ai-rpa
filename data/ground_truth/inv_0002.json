@@ -1,5 +1,5 @@
 {
-  "invoice_number": "907/06/2026",
+  "invoice_number": "KOR/907/06/2026",
   "issue_date": "2026-06-22",
   "due_date": "2026-06-29",
   "seller_name": "Horyzont Transport Sp. z o.o.",
@@ -7,7 +7,7 @@
   "buyer_name": "Baltic Energia Sp. j.",
   "buyer_nip": "1781618496",
   "currency": "PLN",
-  "net_amount": "2045.02",
-  "vat_amount": "470.35",
-  "gross_amount": "2515.37"
+  "net_amount": "-2045.02",
+  "vat_amount": "-470.35",
+  "gross_amount": "-2515.37"
 }

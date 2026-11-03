@@ -1,7 +1,7 @@
 {
   "invoice_number": "245/03/2026",
   "issue_date": "2026-03-20",
-  "due_date": "2026-04-03",
+  "due_date": null,
   "seller_name": "Optima Transport Sp. j.",
   "seller_nip": "8746886230",
   "buyer_name": "Nova Serwis Sp. z o.o.",

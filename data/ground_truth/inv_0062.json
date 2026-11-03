@@ -1,0 +1,13 @@
+{
+  "invoice_number": "FS 35/2026",
+  "issue_date": "2026-03-12",
+  "due_date": "2026-03-19",
+  "seller_name": "Baltic Consulting Sp. z o.o.",
+  "seller_nip": "5562328582",
+  "buyer_name": "Maria Wójcik",
+  "buyer_nip": null,
+  "currency": "PLN",
+  "net_amount": "19045.74",
+  "vat_amount": "4380.52",
+  "gross_amount": "23426.26"
+}

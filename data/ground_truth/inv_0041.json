@@ -1,5 +1,5 @@
 {
-  "invoice_number": "438/08/2026",
+  "invoice_number": "KOR/438/08/2026",
   "issue_date": "2026-08-21",
   "due_date": "2026-09-20",
   "seller_name": "Vega Technologie S.A.",
@@ -7,7 +7,7 @@
   "buyer_name": "Zenit Transport Sp. k.",
   "buyer_nip": "8365766150",
   "currency": "PLN",
-  "net_amount": "2179.92",
-  "vat_amount": "501.38",
-  "gross_amount": "2681.30"
+  "net_amount": "-2179.92",
+  "vat_amount": "-501.38",
+  "gross_amount": "-2681.30"
 }

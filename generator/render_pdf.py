@@ -3,8 +3,11 @@
 Run from the repository root:
     python -m generator.render_pdf
 
-Reads  data/ground_truth/inv_XXXX.json
+Reads  data/ground_truth/inv_XXXX.json and data/cases.json
 Writes data/raw/inv_XXXX.pdf and data/raw/manifest.csv
+
+Documents marked as scan_good / scan_bad / photo in cases.json are converted
+into image-only PDFs (no text layer) after rendering.
 
 Each template shows the SAME data in a different layout, with different
 labels, date formats, number formats and a few distractor elements
@@ -14,6 +17,7 @@ labels, date formats, number formats and a few distractor elements
 import argparse
 import csv
 import json
+import random
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
@@ -24,6 +28,8 @@ from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
+
+from generator.degrade import pdf_to_scan
 
 FONT_DIR = Path("generator/fonts")
 W, H = A4
@@ -67,6 +73,10 @@ def nip_plain(nip: str) -> str:
     return nip
 
 
+def is_correction(d: dict) -> bool:
+    return Decimal(d["net_amount"]) < 0
+
+
 def vat_rate(d: dict) -> int:
     return int(round(Decimal(d["vat_amount"]) / Decimal(d["net_amount"]) * 100))
 
@@ -102,7 +112,8 @@ def party_block(c, x, y, title, name, nip, nip_fmt, size=10):
 # --------------------------------------------------------------------------
 def template_classic(c, d):
     cur = d["currency"]
-    put(c, 20 * mm, Y(25), f"Faktura VAT nr {d['invoice_number']}", 16, True)
+    title = "Faktura korygująca nr" if is_correction(d) else "Faktura VAT nr"
+    put(c, 20 * mm, Y(25), f"{title} {d['invoice_number']}", 16, True)
     put(c, W - 20 * mm, Y(25), f"Data wystawienia: {date_dots(d['issue_date'])}", align="right")
     if d.get("due_date"):
         put(c, W - 20 * mm, Y(31), f"Termin płatności: {date_dots(d['due_date'])}", align="right")
@@ -144,7 +155,7 @@ def template_modern(c, d):
     blue = colors.HexColor("#1F4E79")
     c.setFillColor(blue)
     c.rect(0, H - 38 * mm, W, 38 * mm, stroke=0, fill=1)
-    put(c, 20 * mm, Y(17), "FAKTURA", 22, True, color=colors.white)
+    put(c, 20 * mm, Y(17), "FAKTURA KORYGUJĄCA" if is_correction(d) else "FAKTURA", 22, True, color=colors.white)
     put(c, 20 * mm, Y(27), f"Nr {d['invoice_number']}", 12, color=colors.white)
     put(c, W - 20 * mm, Y(17), f"Wystawiono: {d['issue_date']}", 10, align="right", color=colors.white)
     if d.get("due_date"):
@@ -182,7 +193,8 @@ def template_modern(c, d):
 # --------------------------------------------------------------------------
 def template_dense(c, d):
     cur = d["currency"]
-    put(c, W / 2, Y(15), f"Faktura nr {d['invoice_number']}", 12, True, "center")
+    title = "Faktura korygująca nr" if is_correction(d) else "Faktura nr"
+    put(c, W / 2, Y(15), f"{title} {d['invoice_number']}", 12, True, "center")
     put(c, 15 * mm, Y(25), f"Data wystawienia: {date_long(d['issue_date'])}", 8)
     put(c, 15 * mm, Y(29), f"Data sprzedaży: {date_long(d['issue_date'])}", 8)  # distractor
     if d.get("due_date"):
@@ -209,11 +221,11 @@ def template_dense(c, d):
 
     # totals on the left side
     put(c, 15 * mm, Y(90), "Wartość netto:", 8)
-    put(c, 60 * mm, Y(90), f"{amount_comma(d['net_amount'])} {cur}", 8, align="right")
+    put(c, 80 * mm, Y(90), f"{amount_comma(d['net_amount'])} {cur}", 8, align="right")
     put(c, 15 * mm, Y(95), "Kwota VAT:", 8)
-    put(c, 60 * mm, Y(95), f"{amount_comma(d['vat_amount'])} {cur}", 8, align="right")
+    put(c, 80 * mm, Y(95), f"{amount_comma(d['vat_amount'])} {cur}", 8, align="right")
     put(c, 15 * mm, Y(100), "Wartość brutto:", 8, True)
-    put(c, 60 * mm, Y(100), f"{amount_comma(d['gross_amount'])} {cur}", 8, True, "right")
+    put(c, 80 * mm, Y(100), f"{amount_comma(d['gross_amount'])} {cur}", 8, True, "right")
 
     # distractors
     put(c, 15 * mm, Y(115), "Nr konta: PL 61 1090 1014 0000 0712 1981 2874", 7)
@@ -243,22 +255,44 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--gt-dir", default="data/ground_truth")
     parser.add_argument("--out-dir", default="data/raw")
+    parser.add_argument("--cases", default="data/cases.json")
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
     gt_dir, out_dir = Path(args.gt_dir), Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    for old in out_dir.glob("inv_*.pdf"):
+        old.unlink()
     register_fonts()
+
+    cases_path = Path(args.cases)
+    cases = json.loads(cases_path.read_text(encoding="utf-8")) if cases_path.exists() else {}
+    rng = random.Random(args.seed)
 
     files = sorted(gt_dir.glob("inv_*.json"))
     rows = []
     for i, f in enumerate(files):
         data = json.loads(f.read_text(encoding="utf-8"))
         name, template_fn = TEMPLATES[i % len(TEMPLATES)]
-        render(data, out_dir / f"{f.stem}.pdf", template_fn)
-        rows.append({"doc_id": f.stem, "template": name})
+        pdf_path = out_dir / f"{f.stem}.pdf"
+        render(data, pdf_path, template_fn)
+
+        info = cases.get(f.stem, {})
+        degradation = info.get("degradation", "digital")
+        if degradation != "digital":
+            pdf_to_scan(pdf_path, degradation, rng)
+
+        rows.append(
+            {
+                "doc_id": f.stem,
+                "template": name,
+                "case": info.get("case", "clean"),
+                "degradation": degradation,
+            }
+        )
 
     with open(out_dir / "manifest.csv", "w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=["doc_id", "template"])
+        writer = csv.DictWriter(fh, fieldnames=["doc_id", "template", "case", "degradation"])
         writer.writeheader()
         writer.writerows(rows)
 

@@ -1,14 +1,27 @@
-"""Generate synthetic invoice data (ground truth).
+"""Generate synthetic invoice data (ground truth) including hard cases.
 
 Run from the repository root:
     python -m generator.make_data --count 60 --seed 42
 
-Writes one JSON per invoice to data/ground_truth/inv_XXXX.json.
-The data is internally consistent (valid NIP checksum, net + VAT = gross,
-due date after issue date). Rendering to PDF is a separate step.
+Writes:
+    data/ground_truth/inv_XXXX.json   - what is PRINTED on each invoice
+    data/cases.json                   - description of each document: case type,
+                                        how it will be degraded (scan/photo) and
+                                        which flags a good system should raise
+
+Hard cases (a few of each, chosen with the seed):
+    missing_due_date   - no payment term on the invoice
+    wrong_sum          - printed gross != net + VAT  (expected flag: sum_mismatch)
+    bad_nip_checksum   - seller NIP with a wrong checksum (expected: checksum_failed)
+    correction_invoice - "Faktura korygująca", negative amounts
+    duplicate          - exact copy of another invoice under a new file name
+
+Ground truth always equals what is printed, even when it is wrong. Detecting
+that something is wrong is the job of the validation layer.
 """
 
 import argparse
+import json
 import random
 from datetime import date, timedelta
 from decimal import ROUND_HALF_UP, Decimal
@@ -17,6 +30,7 @@ from pathlib import Path
 from api.schemas import InvoiceData
 
 OUT_DIR = Path("data/ground_truth")
+CASES_PATH = Path("data/cases.json")
 
 NIP_WEIGHTS = (6, 5, 7, 2, 3, 4, 5, 6, 7)
 
@@ -37,6 +51,10 @@ PRIVATE_NAMES = [
 VAT_RATES = [Decimal("0.23"), Decimal("0.08"), Decimal("0.05")]
 VAT_WEIGHTS = [0.8, 0.15, 0.05]
 TWO_PLACES = Decimal("0.01")
+
+DEGRADATIONS = ["digital", "scan_good", "scan_bad", "photo"]
+DEGRADATION_WEIGHTS = [0.5, 0.2, 0.15, 0.15]
+LOW_QUALITY = {"scan_bad", "photo"}
 
 
 def make_nip(rng: random.Random) -> str:
@@ -91,6 +109,63 @@ def make_invoice(rng: random.Random) -> InvoiceData:
     )
 
 
+# --------------------------------------------------------------------------
+# Hard cases
+# --------------------------------------------------------------------------
+def break_nip(nip: str, rng: random.Random) -> str:
+    """Change the last digit so that the checksum is guaranteed to be wrong."""
+    return nip[:-1] + str((int(nip[-1]) + rng.randint(1, 9)) % 10)
+
+
+def apply_hard_cases(invoices: list[InvoiceData], rng: random.Random):
+    """Mutate some invoices in place. Returns (cases_by_index, duplicates)."""
+    n = len(invoices)
+    k = n // 20  # how many of each hard case (3 for 60 invoices)
+    if k == 0:
+        return {}, []
+
+    pool = list(range(n))
+    rng.shuffle(pool)
+
+    def take() -> list[int]:
+        return [pool.pop() for _ in range(k)]
+
+    cases: dict[int, dict] = {}
+
+    for i in take():
+        invoices[i] = invoices[i].model_copy(update={"due_date": None})
+        cases[i] = {"case": "missing_due_date", "expected_flags": {"due_date": ["missing"]}, "document_flags": []}
+
+    for i in take():
+        inv = invoices[i]
+        offset = Decimal(rng.randint(10, 500)) * rng.choice([-1, 1])
+        invoices[i] = inv.model_copy(update={"gross_amount": inv.gross_amount + offset})
+        cases[i] = {"case": "wrong_sum", "expected_flags": {"gross_amount": ["sum_mismatch"]}, "document_flags": []}
+
+    for i in take():
+        invoices[i] = invoices[i].model_copy(update={"seller_nip": break_nip(invoices[i].seller_nip, rng)})
+        cases[i] = {"case": "bad_nip_checksum", "expected_flags": {"seller_nip": ["checksum_failed"]}, "document_flags": []}
+
+    for i in take():
+        inv = invoices[i]
+        invoices[i] = inv.model_copy(
+            update={
+                "invoice_number": "KOR/" + inv.invoice_number,
+                "net_amount": -inv.net_amount,
+                "vat_amount": -inv.vat_amount,
+                "gross_amount": -inv.gross_amount,
+            }
+        )
+        cases[i] = {
+            "case": "correction_invoice",
+            "expected_flags": {},
+            "document_flags": ["possible_correction_invoice"],
+        }
+
+    duplicates = take()  # indices of invoices that will be copied
+    return cases, duplicates
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--count", type=int, default=60)
@@ -98,14 +173,51 @@ def main() -> None:
     args = parser.parse_args()
 
     rng = random.Random(args.seed)
+
+    # 1. clean base invoices (same sequence as before, so same data for same seed)
+    invoices = [make_invoice(rng) for _ in range(args.count)]
+    doc_ids = [f"inv_{i + 1:04d}" for i in range(args.count)]
+
+    # 2. hard cases
+    cases_by_index, duplicate_sources = apply_hard_cases(invoices, rng)
+
+    cases: dict[str, dict] = {}
+    for i, doc_id in enumerate(doc_ids):
+        cases[doc_id] = cases_by_index.get(
+            i, {"case": "clean", "expected_flags": {}, "document_flags": []}
+        ).copy()
+        cases[doc_id]["duplicate_of"] = None
+
+    # 3. duplicates: exact copies under new ids
+    for src in duplicate_sources:
+        new_id = f"inv_{len(doc_ids) + 1:04d}"
+        invoices.append(invoices[src].model_copy())
+        doc_ids.append(new_id)
+        cases[new_id] = {
+            "case": "duplicate",
+            "expected_flags": {},
+            "document_flags": [],
+            "duplicate_of": doc_ids[src],
+        }
+
+    # 4. how each document will look (digital PDF, scan, photo)
+    for doc_id in doc_ids:
+        level = rng.choices(DEGRADATIONS, weights=DEGRADATION_WEIGHTS)[0]
+        cases[doc_id]["degradation"] = level
+        if level in LOW_QUALITY:
+            cases[doc_id]["document_flags"] = cases[doc_id]["document_flags"] + ["low_quality_scan"]
+
+    # 5. write files (remove leftovers from earlier runs first)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    for old in OUT_DIR.glob("inv_*.json"):
+        old.unlink()
+    for doc_id, invoice in zip(doc_ids, invoices):
+        (OUT_DIR / f"{doc_id}.json").write_text(invoice.model_dump_json(indent=2), encoding="utf-8")
 
-    for i in range(1, args.count + 1):
-        invoice = make_invoice(rng)
-        path = OUT_DIR / f"inv_{i:04d}.json"
-        path.write_text(invoice.model_dump_json(indent=2), encoding="utf-8")
+    CASES_PATH.write_text(json.dumps(cases, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Generated {args.count} ground truth files in {OUT_DIR}")
+    print(f"Generated {len(doc_ids)} ground truth files in {OUT_DIR}")
+    print(f"Case descriptions written to {CASES_PATH}")
 
 
 if __name__ == "__main__":
