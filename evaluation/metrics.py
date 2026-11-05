@@ -100,6 +100,11 @@ def main() -> None:
     parser.add_argument("--pred-dir", required=True)
     parser.add_argument("--subset", choices=["dev", "test", "all"], default="dev")
     parser.add_argument("--run-name", default=None)
+    parser.add_argument(
+        "--only-predicted",
+        action="store_true",
+        help="evaluate only documents that have a prediction file (useful for small trial runs)",
+    )
     args = parser.parse_args()
 
     pred_dir = Path(args.pred_dir)
@@ -110,6 +115,9 @@ def main() -> None:
         doc_ids = sorted(cases)
     else:
         doc_ids = json.loads(SPLIT_PATH.read_text(encoding="utf-8"))[args.subset]
+
+    if args.only_predicted:
+        doc_ids = [d for d in doc_ids if (pred_dir / f"{d}.json").exists()]
 
     templates = {}
     if MANIFEST_PATH.exists():
