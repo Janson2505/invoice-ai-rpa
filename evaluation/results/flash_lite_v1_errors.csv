@@ -1,0 +1,2 @@
+doc_id,field,expected,got,degradation,template,case
+inv_0057,issue_date,2026-10-18,2026-10-14,scan_bad,dense,clean
